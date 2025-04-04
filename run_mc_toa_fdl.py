@@ -29,7 +29,7 @@ def main(fault_matrix_path, coverage_matrix_path):
    
     df = pd.DataFrame(results)
     df.to_csv("fdl_results.csv", index=False)
-    print("✅ FDL results saved to fdl_results.csv")
+    print("FDL results saved to fdl_results.csv")
 
     
     plt.figure(figsize=(6, 4))
