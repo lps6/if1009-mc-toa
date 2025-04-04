@@ -1,4 +1,3 @@
-# run_siena_matrix_generator.py
 
 import numpy as np
 from pathlib import Path
@@ -30,7 +29,7 @@ def parse_killmap(killmap_log):
             if mutant in kill_matrix.get(test, set()):
                 matrix[i][j] = 1
 
-    print(f"✅ Fault matrix shape: {matrix.shape}")
+    print(f"Fault matrix shape: {matrix.shape}")
     return matrix
 
 def parse_coverage_matrix(coverage_path):
@@ -48,7 +47,6 @@ def parse_coverage_matrix(coverage_path):
     return matrix
 
 def main():
-    # Adjust these if your files are elsewhere
     killmap_log = "/Users/lucaspires/Downloads/TestProject/siena/killmap.log"
     coverage_path = "/Users/lucaspires/Downloads/TestProject/siena/siena-coverage-matrix.txt"
     output_dir = Path("./siena/MC-TOA")
@@ -61,7 +59,7 @@ def main():
     coverage_matrix = parse_coverage_matrix(coverage_path)
     np.save(output_dir / "coverage_matrix.npy", coverage_matrix)
 
-    print("✅ Matrices saved to:", output_dir)
+    print("Matrices saved to:", output_dir)
 
 if __name__ == "__main__":
     main()

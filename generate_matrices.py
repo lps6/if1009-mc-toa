@@ -1,7 +1,6 @@
 import numpy as np
 
 def generate_fault_matrix(mutants_log_path, killmap_log_path, num_tests):
-    # Step 1: Parse mutants
     with open(mutants_log_path, "r") as f:
         mutant_ids = [line.strip() for line in f if line.strip()]
     mutant_index_map = {mutant_id: idx for idx, mutant_id in enumerate(mutant_ids)}
@@ -28,22 +27,18 @@ def generate_coverage_matrix(coverage_matrix_path):
     return coverage_matrix
 
 def main():
-    # ✅ EDIT THESE PATHS
     mutants_log = "./siena/mutants.log"
     killmap_log = "./siena/killmap.log"
     coverage_path = "./siena/siena-coverage-matrix.txt"
 
-    # Determine number of tests from coverage matrix
     coverage_matrix = generate_coverage_matrix(coverage_path)
     num_tests = coverage_matrix.shape[0]
 
-    # Generate fault matrix
     fault_matrix = generate_fault_matrix(mutants_log, killmap_log, num_tests)
 
-    # Save both
     np.save("./siena/MC-TOA/fault_matrix.npy", fault_matrix)
     np.save("./siena/MC-TOA/coverage_matrix.npy", coverage_matrix)
-    print("✅ Saved fault_matrix.npy and coverage_matrix.npy to ./siena/MC-TOA/")
+    print("Saved fault_matrix.npy and coverage_matrix.npy to ./siena/MC-TOA/")
 
 if __name__ == "__main__":
     main()

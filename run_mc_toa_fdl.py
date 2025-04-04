@@ -3,7 +3,7 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 
-from mc_toa import mc_toa_selection  # Assumes your MC-TOA code is in mc_toa.py
+from mc_toa import mc_toa_selection 
 
 def calculate_fdl(full_fault_matrix, reduced_fault_matrix):
     full_detected = np.any(full_fault_matrix, axis=0)
@@ -26,12 +26,12 @@ def main(fault_matrix_path, coverage_matrix_path):
         results.append({"Reduction Ratio": int(ratio * 100), "FDL": fdl})
         print(f"Reduction {int(ratio * 100)}% -> FDL: {fdl:.4f}")
 
-    # Save CSV
+   
     df = pd.DataFrame(results)
     df.to_csv("fdl_results.csv", index=False)
     print("✅ FDL results saved to fdl_results.csv")
 
-    # Generate plot
+    
     plt.figure(figsize=(6, 4))
     plt.bar(df["Reduction Ratio"], df["FDL"], color="skyblue")
     plt.xlabel("Test Suite Reduction (%)")

@@ -4,7 +4,7 @@ def mc_toa_selection(coverage_matrix, reduction_ratio):
     num_tests = coverage_matrix.shape[0]
     target_size = max(1, int(num_tests * reduction_ratio))
 
-    # Greedy coverage maximization (simplified for demonstration)
+    # Greedy coverage maximization escolhida como parametro pro projeto
     selected = []
     remaining = list(range(num_tests))
     covered = np.zeros(coverage_matrix.shape[1], dtype=bool)
