@@ -16,7 +16,7 @@ def main(fault_matrix_path, coverage_matrix_path):
     fault_matrix = np.load(fault_matrix_path)
     coverage_matrix = np.load(coverage_matrix_path)
 
-    reduction_ratios = [0.2, 0.5, 0.7]
+    reduction_ratios = [0.9, 0.8, 0.7, 0.6, 0.5, 0.4, 0.3, 0.2, 0.1]
     results = []
 
     for ratio in reduction_ratios:
